@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,5 +24,6 @@ public class Pedido {
     private String direccionEntrega;
     private Double costoEnvio;
     private Double costoPedido;
+    private List<Integer> listaDePedidos;
     private Double totalPagar;
 }

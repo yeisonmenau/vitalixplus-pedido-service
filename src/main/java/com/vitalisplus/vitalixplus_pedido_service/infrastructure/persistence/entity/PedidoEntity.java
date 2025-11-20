@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "pedido")
@@ -37,6 +38,8 @@ public class PedidoEntity {
     private Double costoEnvio;
     @Column (name = "costo_pedido")
     private Double costoPedido;
+    @Column (name = "lista_de_pedidos")
+    private List<Integer> listaDePedidos;
     @Column (name = "total_pagar")
     private Double totalPagar;
 }
