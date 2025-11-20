@@ -1,4 +1,4 @@
-package com.vitalisplus.vitalixplus_pedido_service.infrastructure.external.dto.response;
+package com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.response;
 
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.UsuarioEntity;
 import lombok.AllArgsConstructor;

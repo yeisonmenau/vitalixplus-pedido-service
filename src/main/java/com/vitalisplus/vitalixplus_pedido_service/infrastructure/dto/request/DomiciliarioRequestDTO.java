@@ -1,4 +1,4 @@
-package com.vitalisplus.vitalixplus_pedido_service.infrastructure.external.dto.request;
+package com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.request;
 
 import lombok.Data;
 

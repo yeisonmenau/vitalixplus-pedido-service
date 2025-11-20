@@ -10,26 +10,26 @@ public class AuxiliarService implements AuxiliarRepository {
     private final AuxiliarRepository auxiliarRepository;
     @Override
     public Auxiliar crearAuxiliar(Auxiliar auxiliar) {
-        return null;
+        return auxiliarRepository.crearAuxiliar(auxiliar);
     }
 
     @Override
     public List<Auxiliar> mostrarAuxiliares() {
-        return List.of();
+        return auxiliarRepository.mostrarAuxiliares();
     }
 
     @Override
     public Auxiliar buscarAuxiliarporId(Long idAuxiliar) {
-        return null;
+        return auxiliarRepository.buscarAuxiliarporId(idAuxiliar);
     }
 
     @Override
     public Auxiliar modificarAuxiliar(Auxiliar auxiliar) {
-        return null;
+        return auxiliarRepository.modificarAuxiliar(auxiliar);
     }
 
     @Override
-    public String cambiarEstadoAuxiliar() {
-        return "";
+    public String cambiarEstadoAuxiliar(Auxiliar auxiliar) {
+        return auxiliarRepository.cambiarEstadoAuxiliar(auxiliar);
     }
 }

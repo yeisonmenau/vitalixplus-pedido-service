@@ -10,5 +10,5 @@ public interface AuxiliarRepository {
     List<Auxiliar> mostrarAuxiliares ();
     Auxiliar buscarAuxiliarporId (Long idAuxiliar);
     Auxiliar modificarAuxiliar (Auxiliar auxiliar);
-    String cambiarEstadoAuxiliar();
+    String cambiarEstadoAuxiliar(Auxiliar auxiliar);
 }

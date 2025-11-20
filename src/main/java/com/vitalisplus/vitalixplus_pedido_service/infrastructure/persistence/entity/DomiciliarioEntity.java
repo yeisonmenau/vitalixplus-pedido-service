@@ -24,5 +24,5 @@ public class DomiciliarioEntity {
     private Boolean estado;
     @ManyToOne
     @JoinColumn(name = "id_sucursal", nullable = false)
-    private Sucursal sucursal;
+    private SucursalEntity sucursal;
 }

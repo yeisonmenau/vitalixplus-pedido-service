@@ -4,4 +4,5 @@ import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.ent
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AuxiliarJpaRepository extends JpaRepository<AuxiliarEntity, Long> {
+
 }
