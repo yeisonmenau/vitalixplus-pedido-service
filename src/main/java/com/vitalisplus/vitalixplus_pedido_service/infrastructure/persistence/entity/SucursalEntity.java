@@ -1,4 +1,4 @@
-package com.vitalisplus.vitalixplus_pedido_service.infrastructure.entity;
+package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

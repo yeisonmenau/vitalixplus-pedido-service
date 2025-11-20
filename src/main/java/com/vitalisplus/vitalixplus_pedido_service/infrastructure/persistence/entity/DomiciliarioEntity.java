@@ -1,25 +1,28 @@
-package com.vitalisplus.vitalixplus_pedido_service.infrastructure.entity;
+package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity;
 
+import com.vitalisplus.vitalixplus_pedido_service.domain.sucursal.model.Sucursal;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "auxiliar")
+@Table(name = "domiciliario")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuxiliarEntity {
+public class DomiciliarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_auxiliar")
-    private Long idAuxiliar;
+    @Column(name = "id_domiciliario")
+    private Long idDomiciliario;
     private String nombre;
     private String apellido;
     private String telefono;
+    @Column(name = "placa_vehiculo")
+    private String placaVehiculo;
     private Boolean estado;
     @ManyToOne
     @JoinColumn(name = "id_sucursal", nullable = false)
-    private SucursalEntity sucursal;
+    private Sucursal sucursal;
 }
