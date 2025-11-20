@@ -7,8 +7,5 @@ import java.util.List;
 
 public interface SucursalRepository {
     Sucursal crearSucursal (Sucursal sucursal);
-    Sucursal buscarSucursalporId (Long idSucursal);
-    List<Sucursal> mostrarSucursales ();
-    Sucursal modificarSucursal (Sucursal sucursal);
-    String cambiarEstadoSucursal();
+
 }

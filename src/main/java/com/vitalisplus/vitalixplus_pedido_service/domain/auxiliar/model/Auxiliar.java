@@ -14,5 +14,5 @@ public class Auxiliar {
     private String apellido;
     private String telefono;
     private Boolean estado;
-    private Sucursal sucursal;
+    private Long idSucursal;
 }

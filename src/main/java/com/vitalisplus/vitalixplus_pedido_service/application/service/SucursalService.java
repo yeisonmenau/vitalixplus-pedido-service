@@ -10,26 +10,7 @@ public class SucursalService implements SucursalRepository {
     private final SucursalRepository sucursalRepository;
     @Override
     public Sucursal crearSucursal(Sucursal sucursal) {
-        return null;
+        return sucursalRepository.crearSucursal(sucursal);
     }
 
-    @Override
-    public Sucursal buscarSucursalporId(Long idSucursal) {
-        return null;
-    }
-
-    @Override
-    public List<Sucursal> mostrarSucursales() {
-        return List.of();
-    }
-
-    @Override
-    public Sucursal modificarSucursal(Sucursal sucursal) {
-        return null;
-    }
-
-    @Override
-    public String cambiarEstadoSucursal() {
-        return "";
-    }
 }
