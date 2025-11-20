@@ -1,0 +1,42 @@
+package com.vitalisplus.vitalixplus_pedido_service.infrastructure.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pedido")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PedidoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id_pedido")
+    private Long idPedido;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private UsuarioEntity usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_sucursal", nullable = false)
+    private SucursalEntity sucursal;
+    @ManyToOne
+    @JoinColumn(name = "id_auxiliar", nullable = false)
+    private AuxiliarEntity auxiliar;
+    @ManyToOne
+    @JoinColumn(name = "id_domiciliario", nullable = false)
+    private DomiciliarioEntity domiciliario;
+    @Column (name = "fecha_pedido")
+    private LocalDate fechaPedido;
+    @Column (name = "direccion_entrega")
+    private String direccionEntrega;
+    @Column (name = "costo_envio")
+    private Double costoEnvio;
+    @Column (name = "costo_pedido")
+    private Double costoPedido;
+    @Column (name = "total_pagar")
+    private Double totalPagar;
+}
