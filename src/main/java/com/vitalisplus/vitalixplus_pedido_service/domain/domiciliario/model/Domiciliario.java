@@ -15,5 +15,5 @@ public class Domiciliario {
     private String telefono;
     private String placaVehiculo;
     private Boolean estado;
-    private Sucursal sucursal;
+    private Long idSucursal;
 }

@@ -1,8 +1,10 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.configuration;
 
 import com.vitalisplus.vitalixplus_pedido_service.application.service.AuxiliarService;
+import com.vitalisplus.vitalixplus_pedido_service.application.service.DomiciliarioService;
 import com.vitalisplus.vitalixplus_pedido_service.application.service.SucursalService;
 import com.vitalisplus.vitalixplus_pedido_service.domain.auxiliar.out.AuxiliarRepository;
+import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.out.DomiciliaroRepository;
 import com.vitalisplus.vitalixplus_pedido_service.domain.sucursal.out.SucursalRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,5 +18,9 @@ public class ConfigBean {
     @Bean
     public SucursalService sucursalService(SucursalRepository sucursalRepository){
         return new SucursalService(sucursalRepository);
+    }
+    @Bean
+    public DomiciliarioService domiciliarioService (DomiciliaroRepository domiciliaroRepository){
+        return new DomiciliarioService(domiciliaroRepository);
     }
 }

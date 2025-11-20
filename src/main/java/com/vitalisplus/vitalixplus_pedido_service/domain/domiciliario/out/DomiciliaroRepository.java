@@ -8,6 +8,6 @@ public interface DomiciliaroRepository {
     Domiciliario crearDomiciliario (Domiciliario domiciliario);
     List<Domiciliario> mostrarDomiciliarios ();
     Domiciliario buscarDomiciliarioporId (Long idDomiciliario);
-    Domiciliario modificarDomiciliario (Domiciliario domiciliario);
-    String cambiarEstadoDomiciliario();
+    Domiciliario modificarDomiciliario (Long idDomiciliario, Domiciliario domiciliario);
+    String cambiarEstadoDomiciliario(Long idDomiciliario);
 }

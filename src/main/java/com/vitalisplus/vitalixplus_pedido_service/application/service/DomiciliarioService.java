@@ -10,26 +10,26 @@ public class DomiciliarioService implements DomiciliaroRepository {
     private final DomiciliaroRepository domiciliaroRepository;
     @Override
     public Domiciliario crearDomiciliario(Domiciliario domiciliario) {
-        return null;
+        return domiciliaroRepository.crearDomiciliario(domiciliario);
     }
 
     @Override
     public List<Domiciliario> mostrarDomiciliarios() {
-        return List.of();
+        return domiciliaroRepository.mostrarDomiciliarios();
     }
 
     @Override
     public Domiciliario buscarDomiciliarioporId(Long idDomiciliario) {
-        return null;
+        return domiciliaroRepository.buscarDomiciliarioporId(idDomiciliario);
     }
 
     @Override
-    public Domiciliario modificarDomiciliario(Domiciliario domiciliario) {
-        return null;
+    public Domiciliario modificarDomiciliario(Long idDomiciliario, Domiciliario domiciliario) {
+        return domiciliaroRepository.modificarDomiciliario(idDomiciliario,domiciliario);
     }
 
     @Override
-    public String cambiarEstadoDomiciliario() {
-        return "";
+    public String cambiarEstadoDomiciliario(Long idDomiciliario) {
+        return domiciliaroRepository.cambiarEstadoDomiciliario(idDomiciliario);
     }
 }

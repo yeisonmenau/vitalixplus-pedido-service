@@ -8,5 +8,5 @@ public class DomiciliarioRequestDTO {
     private String apellido;
     private String telefono;
     private String placaVehiculo;
-    private String nombreSucursal;
+    private Long idSucursal;
 }
