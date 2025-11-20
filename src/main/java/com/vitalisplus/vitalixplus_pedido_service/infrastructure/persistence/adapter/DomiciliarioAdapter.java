@@ -1,10 +1,8 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.adapter;
 
-import com.vitalisplus.vitalixplus_pedido_service.application.exception.AuxiliarNotFoundException;
 import com.vitalisplus.vitalixplus_pedido_service.application.exception.DomiciliarioNotFoundException;
-import com.vitalisplus.vitalixplus_pedido_service.domain.auxiliar.model.Auxiliar;
 import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.model.Domiciliario;
-import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.out.DomiciliaroRepository;
+import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.out.DomiciliarioRepository;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.DomiciliarioEntity;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.mapper.DomiciliarioMapper;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.DomiciliarioJpaRepository;
@@ -15,7 +13,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class DomiciliarioAdapter implements DomiciliaroRepository {
+public class DomiciliarioAdapter implements DomiciliarioRepository {
     private final DomiciliarioJpaRepository domiciliarioJpaRepository;
     private final DomiciliarioMapper domiciliarioMapper;
 

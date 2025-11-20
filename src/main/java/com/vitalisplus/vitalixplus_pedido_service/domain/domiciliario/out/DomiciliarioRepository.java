@@ -4,7 +4,7 @@ import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.model.Domi
 
 import java.util.List;
 
-public interface DomiciliaroRepository {
+public interface DomiciliarioRepository {
     Domiciliario crearDomiciliario (Domiciliario domiciliario);
     List<Domiciliario> mostrarDomiciliarios ();
     Domiciliario buscarDomiciliarioporId (Long idDomiciliario);

@@ -3,39 +3,16 @@ package com.vitalisplus.vitalixplus_pedido_service.application.service;
 import com.vitalisplus.vitalixplus_pedido_service.domain.usuario.model.Usuario;
 import com.vitalisplus.vitalixplus_pedido_service.domain.usuario.out.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
 @RequiredArgsConstructor
-public class UsuarioService implements UsuarioRepository {
+public class UsuarioService{
     private final UsuarioRepository usuarioRepository;
 
-    @Override
+
     public Usuario crearUsuario(Usuario usuario) {
-        return null;
+        return usuarioRepository.crearUsuario(usuario);
     }
 
-    @Override
-    public List<Usuario> mostrarUsuarios() {
-        return List.of();
-    }
-
-    @Override
-    public Usuario buscarUsuarioporId(Long idUsuario) {
-        return null;
-    }
-
-    @Override
-    public Usuario buscarUsuarioporEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public Usuario modificarUsuario(Usuario usuario) {
-        return null;
-    }
-
-    @Override
-    public String cambiarEstadoUsuario() {
-        return "";
-    }
 }

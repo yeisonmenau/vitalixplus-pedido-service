@@ -7,7 +7,6 @@ import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.request.Dom
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.response.DomiciliarioResponseDTO;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.mapper.DomiciliarioMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

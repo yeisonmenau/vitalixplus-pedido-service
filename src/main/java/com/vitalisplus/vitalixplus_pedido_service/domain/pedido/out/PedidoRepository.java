@@ -7,7 +7,5 @@ import java.util.List;
 
 public interface PedidoRepository {
     Pedido crearPedido (Pedido pedido);
-    Pedido buscarPedidoporId (Long idPedido);
-    List<Pedido> mostrarPedido ();
-    Pedido modificarPedido (Pedido pedido);
+
 }

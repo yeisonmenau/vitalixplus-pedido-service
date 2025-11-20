@@ -6,9 +6,5 @@ import java.util.List;
 
 public interface UsuarioRepository {
     Usuario crearUsuario (Usuario usuario);
-    List<Usuario> mostrarUsuarios ();
-    Usuario buscarUsuarioporId (Long idUsuario);
-    Usuario buscarUsuarioporEmail (String email);
-    Usuario modificarUsuario (Usuario usuario);
-    String cambiarEstadoUsuario();
+
 }

@@ -1,35 +1,34 @@
 package com.vitalisplus.vitalixplus_pedido_service.application.service;
 
 import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.model.Domiciliario;
-import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.out.DomiciliaroRepository;
+import com.vitalisplus.vitalixplus_pedido_service.domain.domiciliario.out.DomiciliarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
 @RequiredArgsConstructor
-public class DomiciliarioService implements DomiciliaroRepository {
-    private final DomiciliaroRepository domiciliaroRepository;
-    @Override
+public class DomiciliarioService{
+    private final DomiciliarioRepository domiciliarioRepository;
+
     public Domiciliario crearDomiciliario(Domiciliario domiciliario) {
-        return domiciliaroRepository.crearDomiciliario(domiciliario);
+        return domiciliarioRepository.crearDomiciliario(domiciliario);
     }
 
-    @Override
+
     public List<Domiciliario> mostrarDomiciliarios() {
-        return domiciliaroRepository.mostrarDomiciliarios();
+        return domiciliarioRepository.mostrarDomiciliarios();
     }
 
-    @Override
     public Domiciliario buscarDomiciliarioporId(Long idDomiciliario) {
-        return domiciliaroRepository.buscarDomiciliarioporId(idDomiciliario);
+        return domiciliarioRepository.buscarDomiciliarioporId(idDomiciliario);
     }
 
-    @Override
     public Domiciliario modificarDomiciliario(Long idDomiciliario, Domiciliario domiciliario) {
-        return domiciliaroRepository.modificarDomiciliario(idDomiciliario,domiciliario);
+        return domiciliarioRepository.modificarDomiciliario(idDomiciliario,domiciliario);
     }
 
-    @Override
     public String cambiarEstadoDomiciliario(Long idDomiciliario) {
-        return domiciliaroRepository.cambiarEstadoDomiciliario(idDomiciliario);
+        return domiciliarioRepository.cambiarEstadoDomiciliario(idDomiciliario);
     }
 }

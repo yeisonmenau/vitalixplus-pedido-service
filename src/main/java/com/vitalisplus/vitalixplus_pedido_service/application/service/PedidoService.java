@@ -3,28 +3,16 @@ package com.vitalisplus.vitalixplus_pedido_service.application.service;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.out.PedidoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
 @RequiredArgsConstructor
-public class PedidoService implements PedidoRepository {
+public class PedidoService{
     private final PedidoRepository pedidoRepository;
-    @Override
+
     public Pedido crearPedido(Pedido pedido) {
-        return null;
+        return pedidoRepository.crearPedido(pedido);
     }
 
-    @Override
-    public Pedido buscarPedidoporId(Long idPedido) {
-        return null;
-    }
-
-    @Override
-    public List<Pedido> mostrarPedido() {
-        return List.of();
-    }
-
-    @Override
-    public Pedido modificarPedido(Pedido pedido) {
-        return null;
-    }
 }
