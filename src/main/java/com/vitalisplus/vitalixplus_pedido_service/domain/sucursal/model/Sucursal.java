@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +15,7 @@ public class Sucursal {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private LocalDateTime horarioApertura;
-    private LocalDateTime horarioCierre;
+    private LocalTime horarioApertura;
+    private LocalTime horarioCierre;
     private Boolean estado;
 }

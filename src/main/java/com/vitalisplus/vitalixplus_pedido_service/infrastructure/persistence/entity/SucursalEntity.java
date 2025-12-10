@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "sucursal")
@@ -21,8 +22,8 @@ public class SucursalEntity {
     private String direccion;
     private String ciudad;
     @Column (name = "horario_apertura")
-    private LocalDateTime horarioApertura;
+    private LocalTime horarioApertura;
     @Column (name = "horario_cierre")
-    private LocalDateTime horarioCierre;
+    private LocalTime horarioCierre;
     private Boolean estado;
 }
