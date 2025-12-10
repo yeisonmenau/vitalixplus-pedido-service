@@ -54,7 +54,6 @@ public class AuxiliarController  {
 
     @PutMapping("/change-status/{idAuxiliar}")
     public ResponseEntity<String> cambiarEstadoAuxiliar(@PathVariable Long idAuxiliar) {
-        Auxiliar auxiliar = auxiliarService.buscarAuxiliarporId(idAuxiliar);
         String mensaje = auxiliarService.cambiarEstadoAuxiliar(idAuxiliar);
         return ResponseEntity.ok(mensaje);
     }
