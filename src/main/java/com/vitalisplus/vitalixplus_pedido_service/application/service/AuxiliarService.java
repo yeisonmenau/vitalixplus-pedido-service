@@ -26,11 +26,11 @@ public class AuxiliarService {
     }
 
 
-    public Auxiliar modificarAuxiliar(Auxiliar auxiliar) {
-        return auxiliarRepository.modificarAuxiliar(auxiliar);
+    public Auxiliar modificarAuxiliar(Long idAuxiliar, Auxiliar auxiliar) {
+        return auxiliarRepository.modificarAuxiliar(idAuxiliar, auxiliar);
     }
 
-    public String cambiarEstadoAuxiliar(Auxiliar auxiliar) {
-        return auxiliarRepository.cambiarEstadoAuxiliar(auxiliar);
+    public String cambiarEstadoAuxiliar(Long idAuxiliar) {
+        return auxiliarRepository.cambiarEstadoAuxiliar(idAuxiliar);
     }
 }

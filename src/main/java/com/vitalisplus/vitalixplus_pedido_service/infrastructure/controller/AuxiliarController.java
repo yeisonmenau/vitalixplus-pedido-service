@@ -47,7 +47,7 @@ public class AuxiliarController  {
     @PutMapping("/update/{idAuxiliar}")
     public ResponseEntity<AuxiliarResponseDTO> modificarAuxiliar(@PathVariable Long idAuxiliar, @RequestBody AuxiliarRequestDTO auxiliarRequestDTO) {
         Auxiliar auxiliar = auxiliarMapper.requestToDomain(auxiliarRequestDTO);
-        Auxiliar auxiliarModificada = auxiliarService.modificarAuxiliar(auxiliar);
+        Auxiliar auxiliarModificada = auxiliarService.modificarAuxiliar(idAuxiliar, auxiliar);
         AuxiliarResponseDTO response = auxiliarMapper.domainToResponse(auxiliarModificada);
         return ResponseEntity.ok(response);
     }
@@ -55,7 +55,7 @@ public class AuxiliarController  {
     @PutMapping("/change-status/{idAuxiliar}")
     public ResponseEntity<String> cambiarEstadoAuxiliar(@PathVariable Long idAuxiliar) {
         Auxiliar auxiliar = auxiliarService.buscarAuxiliarporId(idAuxiliar);
-        String mensaje = auxiliarService.cambiarEstadoAuxiliar(auxiliar);
+        String mensaje = auxiliarService.cambiarEstadoAuxiliar(idAuxiliar);
         return ResponseEntity.ok(mensaje);
     }
 

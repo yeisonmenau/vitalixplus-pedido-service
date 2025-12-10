@@ -47,9 +47,9 @@ public class AuxiliarAdapter implements AuxiliarRepository {
     }
 
     @Override
-    public Auxiliar modificarAuxiliar(Auxiliar auxiliar) {
-        AuxiliarEntity existente = auxiliarJpaRepository.findById(auxiliar.getIdAuxiliar())
-                .orElseThrow(() -> new AuxiliarNotFoundException("Auxiliar no encontrado con id: " + auxiliar.getIdAuxiliar()));
+    public Auxiliar modificarAuxiliar(Long idAuxiliar, Auxiliar auxiliar) {
+        AuxiliarEntity existente = auxiliarJpaRepository.findById(idAuxiliar)
+                .orElseThrow(() -> new AuxiliarNotFoundException("Auxiliar no encontrado con id: " + idAuxiliar));
         AuxiliarEntity auxiliarActualizado = auxiliarMapper.domainToEntity(auxiliar);
         auxiliarActualizado.setIdAuxiliar(existente.getIdAuxiliar());
         AuxiliarEntity guardado = auxiliarJpaRepository.save(auxiliarActualizado);
@@ -57,10 +57,10 @@ public class AuxiliarAdapter implements AuxiliarRepository {
     }
 
     @Override
-    public String cambiarEstadoAuxiliar(Auxiliar auxiliar) {
-        Auxiliar auxiliarEntidad = buscarAuxiliarporId(auxiliar.getIdAuxiliar());
+    public String cambiarEstadoAuxiliar(Long idAuxiliar) {
+        Auxiliar auxiliarEntidad = buscarAuxiliarporId(idAuxiliar);
         auxiliarEntidad.setEstado(!auxiliarEntidad.getEstado());
-        modificarAuxiliar(auxiliarEntidad);
-        return "Se cambió el estado del auxiliar con id: " + auxiliar.getIdAuxiliar();
+        modificarAuxiliar(idAuxiliar, auxiliarEntidad);
+        return "Se cambió el estado del auxiliar con id: " + idAuxiliar;
     }
 }

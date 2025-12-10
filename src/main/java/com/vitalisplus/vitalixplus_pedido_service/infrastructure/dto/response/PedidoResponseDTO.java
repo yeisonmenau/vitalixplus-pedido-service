@@ -21,6 +21,6 @@ public class PedidoResponseDTO {
     private String direccionEntrega;
     private Double costoEnvio;
     private Double costoPedido;
-    private List<String> listaDePedidos;
+    private List<Integer> listaDeProductos;
     private Double totalPagar;
 }
