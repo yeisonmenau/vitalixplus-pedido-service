@@ -31,4 +31,20 @@ public class PedidoMapper {
                 pedidoDomain.getTotalPagar()
         );
     }
+
+    public Pedido entityToDomain (PedidoEntity pedidoEntity){
+        return new Pedido(
+                pedidoEntity.getIdPedido(),
+                usuarioMapper.entityToDomain(pedidoEntity.getUsuario()),
+                sucursalMapper.entityToDomain(pedidoEntity.getSucursal()),
+                auxiliarMapper.entityToDomain(pedidoEntity.getAuxiliar()),
+                domiciliarioMapper.entityToDomain(pedidoEntity.getDomiciliario()),
+                pedidoEntity.getFechaPedido(),
+                pedidoEntity.getDireccionEntrega(),
+                pedidoEntity.getCostoEnvio(),
+                pedidoEntity.getCostoPedido(),
+                pedidoEntity.getListaDeProductos(),
+                pedidoEntity.getTotalPagar()
+        );
+    }
 }

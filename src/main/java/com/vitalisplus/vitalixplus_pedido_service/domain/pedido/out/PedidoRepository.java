@@ -9,6 +9,6 @@ import java.util.List;
 public interface PedidoRepository {
     Pedido crearPedido (Pedido pedido);
     List<Pedido> mostrarpedidos ();
-    Auxiliar buscarPedidoPorId (Long idPedido);
-    Auxiliar modificarPedido (Pedido pedido);
+    Pedido buscarPedidoPorId (Long idPedido);
+    Pedido modificarPedido (Long idPedido, Pedido pedido);
 }

@@ -1,15 +1,15 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.adapter;
 
+import com.vitalisplus.vitalixplus_pedido_service.application.exception.PedidoNotFoundException;
 import com.vitalisplus.vitalixplus_pedido_service.application.exception.SucursalNotFoundException;
+import com.vitalisplus.vitalixplus_pedido_service.application.exception.UsuarioNotFoundException;
 import com.vitalisplus.vitalixplus_pedido_service.domain.auxiliar.model.Auxiliar;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.out.PedidoRepository;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.AuxiliarEntity;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.PedidoEntity;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.SucursalEntity;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.*;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.mapper.AuxiliarMapper;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.AuxiliarJpaRepository;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.SucursalJpaRepository;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.mapper.PedidoMapper;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,35 +18,51 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class PedidoAdapter implements PedidoRepository {
+    private final PedidoMapper pedidoMapper;
+    private final UsuarioJpaRepository usuarioJpaRepository;
+    private final SucursalJpaRepository sucursalJpaRepository;
+    private final AuxiliarJpaRepository auxiliarJpaRepository;
+    private final DomiciliarioJpaRepository domiciliarioJpaRepository;
+    private final PedidoJpaRepository pedidoJpaRepository;
 
-
-//    private final AuxiliarMapper auxiliarMapper;
-//    private final AuxiliarJpaRepository auxiliarJpaRepository;
-//    private final SucursalJpaRepository sucursalJpaRepository;
     @Override
     public Pedido crearPedido(Pedido pedido) {
-//        SucursalEntity sucursalEntity = sucursalJpaRepository.findById(auxiliar.getIdSucursal())
-//                .orElseThrow(() -> new SucursalNotFoundException("Sucursal no encontrada con id: " + auxiliar.getIdSucursal()));
-//        AuxiliarEntity auxiliarEntity = auxiliarMapper.domainToEntity(auxiliar);
-//        auxiliarEntity.setEstado(true);
-//        AuxiliarEntity auxiliarGuardado = auxiliarJpaRepository.save(auxiliarEntity);
-//        return auxiliarMapper.entityToDomain(auxiliarGuardado);
-
-        return null;
+        UsuarioEntity usuarioEntity = usuarioJpaRepository.findById(pedido.getUsuario().getIdUsuario())
+                .orElseThrow(() -> new UsuarioNotFoundException("Usuario no encontrado con id: " + pedido.getUsuario().getIdUsuario()));
+        SucursalEntity sucursalEntity = sucursalJpaRepository.findById(pedido.getSucursal().getIdSucursal())
+                .orElseThrow(() -> new SucursalNotFoundException("Sucursal no encontrada con id: " + pedido.getSucursal().getIdSucursal()));
+        AuxiliarEntity auxiliarEntity = auxiliarJpaRepository.findById(pedido.getAuxiliar().getIdAuxiliar())
+                .orElseThrow(() -> new SucursalNotFoundException("Auxiliar no encontrado con id: " + pedido.getAuxiliar().getIdAuxiliar()));
+        DomiciliarioEntity domiciliarioEntity = domiciliarioJpaRepository.findById(pedido.getDomiciliario().getIdDomiciliario())
+                .orElseThrow(() -> new SucursalNotFoundException("Domiciliario no encontrado con id: " + pedido.getDomiciliario().getIdDomiciliario()));
+        PedidoEntity pedidoEntity = pedidoMapper.domainToEntity(pedido);
+        PedidoEntity pedidoGuardado = pedidoJpaRepository.save(pedidoEntity);
+        return pedidoMapper.entityToDomain(pedidoGuardado);
     }
 
     @Override
     public List<Pedido> mostrarpedidos() {
-        return List.of();
+        List<PedidoEntity> pedidosRegistrados = pedidoJpaRepository.findAll();
+        return pedidosRegistrados
+                .stream()
+                .map(pedidoMapper::entityToDomain)
+                .toList();
     }
 
     @Override
-    public Auxiliar buscarPedidoPorId(Long idPedido) {
-        return null;
+    public Pedido buscarPedidoPorId(Long idPedido) {
+        PedidoEntity existente = pedidoJpaRepository.findById(idPedido)
+                .orElseThrow(() -> new PedidoNotFoundException("Pedido no encontrado con id: " + idPedido));
+        return pedidoMapper.entityToDomain(existente);
     }
 
     @Override
-    public Auxiliar modificarPedido(Pedido pedido) {
-        return null;
+    public Pedido modificarPedido(Long idPedido, Pedido pedido) {
+        PedidoEntity existente = pedidoJpaRepository.findById(idPedido)
+                .orElseThrow(() -> new PedidoNotFoundException("Pedido no encontrado con id: " + idPedido));
+        PedidoEntity pedidoActualizado = pedidoMapper.domainToEntity(pedido);
+        pedidoActualizado.setIdPedido(existente.getIdPedido());
+        PedidoEntity guardado = pedidoJpaRepository.save(pedidoActualizado);
+        return pedidoMapper.entityToDomain(guardado);
     }
 }

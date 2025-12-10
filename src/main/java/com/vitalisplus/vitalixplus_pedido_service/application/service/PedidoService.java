@@ -15,4 +15,17 @@ public class PedidoService{
         return pedidoRepository.crearPedido(pedido);
     }
 
+    public List<Pedido> mostrarPedidos() {
+        return pedidoRepository.mostrarpedidos();
+    }
+
+    public Pedido buscarPedidoporId(Long idPedido) {
+        return pedidoRepository.buscarPedidoPorId(idPedido);
+    }
+
+    public Pedido modificarPedido(Long idPedido, Pedido pedido) {
+        return pedidoRepository.modificarPedido(idPedido, pedido);
+    }
+
+
 }
