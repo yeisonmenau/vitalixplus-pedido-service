@@ -1,5 +1,6 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity;
 
+import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.EstadoPedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,4 +43,6 @@ public class PedidoEntity {
     private List<Long> listaDeProductos;
     @Column (name = "total_pagar")
     private Double totalPagar;
+    @Enumerated(EnumType.STRING)
+    private EstadoPedido estado;
 }

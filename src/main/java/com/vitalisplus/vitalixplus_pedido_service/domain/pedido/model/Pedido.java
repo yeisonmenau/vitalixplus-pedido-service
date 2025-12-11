@@ -26,4 +26,6 @@ public class Pedido {
     private Double costoPedido;
     private List<Long> listaDeProductos;
     private Double totalPagar;
+    private EstadoPedido estado;
+
 }

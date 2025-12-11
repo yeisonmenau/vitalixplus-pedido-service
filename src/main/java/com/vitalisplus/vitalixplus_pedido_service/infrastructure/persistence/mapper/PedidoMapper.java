@@ -2,6 +2,7 @@ package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.ma
 
 import com.vitalisplus.vitalixplus_pedido_service.application.exception.SucursalNotFoundException;
 import com.vitalisplus.vitalixplus_pedido_service.application.exception.UsuarioNotFoundException;
+import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.EstadoPedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.request.PedidoRequestDTO;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.response.PedidoResponseDTO;
@@ -32,6 +33,7 @@ public class PedidoMapper {
         entity.setCostoPedido(pedidoDomain.getCostoPedido());
         entity.setListaDeProductos(pedidoDomain.getListaDeProductos());
         entity.setTotalPagar(pedidoDomain.getTotalPagar());
+        entity.setEstado(pedidoDomain.getEstado());
         return entity;
     }
 
@@ -47,7 +49,8 @@ public class PedidoMapper {
                 pedidoEntity.getCostoEnvio(),
                 pedidoEntity.getCostoPedido(),
                 pedidoEntity.getListaDeProductos(),
-                pedidoEntity.getTotalPagar()
+                pedidoEntity.getTotalPagar(),
+                pedidoEntity.getEstado()
         );
     }
 
@@ -66,7 +69,8 @@ public class PedidoMapper {
                 pedidoRequest.getCostoEnvio(),
                 pedidoRequest.getCostoPedido(),
                 pedidoRequest.getListaDeProductos(),
-                pedidoRequest.getTotalPagar()
+                pedidoRequest.getTotalPagar(),
+                EstadoPedido.PENDIENTE
         );
     }
 
@@ -82,7 +86,8 @@ public class PedidoMapper {
                 pedidoDomain.getCostoEnvio(),
                 pedidoDomain.getCostoPedido(),
                 pedidoDomain.getListaDeProductos(),
-                pedidoDomain.getTotalPagar()
+                pedidoDomain.getTotalPagar(),
+                pedidoDomain.getEstado()
         );
     }
 

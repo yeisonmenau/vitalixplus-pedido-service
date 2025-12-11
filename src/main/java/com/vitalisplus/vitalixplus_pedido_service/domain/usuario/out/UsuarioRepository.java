@@ -11,4 +11,5 @@ public interface UsuarioRepository {
     Usuario buscarUsuarioporId (Long idUsuario);
     Usuario modificarUsuario (Long idUsuario, Usuario usuario);
     String cambiarEstadoUsuario(Long idUsuario);
+    //String buscarContraseñaporId(Long idUsuario);
 }
