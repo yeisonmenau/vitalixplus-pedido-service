@@ -40,6 +40,14 @@ public class SucursalAdapter implements SucursalRepository {
                 .orElseThrow(() -> new SucursalNotFoundException("Sucursal no encontrada con id: " + idSucursal));
         return sucursalMapper.entityToDomain(existente);
     }
+@Override
+public Sucursal buscarSucursalporNombre(String nombreSucursal) {
+    SucursalEntity existente = sucursalJpaRepository.findByNombre(nombreSucursal);
+    if (existente == null) {
+        throw new SucursalNotFoundException("Sucursal no encontrada con nombre: " + nombreSucursal);
+    }
+    return sucursalMapper.entityToDomain(existente);
+}
 
     @Override
     public Sucursal modificarSucursal(Long idSucursal, Sucursal sucursal) {

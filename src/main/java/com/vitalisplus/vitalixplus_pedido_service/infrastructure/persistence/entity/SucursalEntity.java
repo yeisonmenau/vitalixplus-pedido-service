@@ -26,4 +26,5 @@ public class SucursalEntity {
     @Column (name = "horario_cierre")
     private LocalTime horarioCierre;
     private Boolean estado;
+
 }

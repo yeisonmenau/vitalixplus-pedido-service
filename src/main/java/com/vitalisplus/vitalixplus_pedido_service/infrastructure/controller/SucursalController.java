@@ -43,6 +43,13 @@ public class SucursalController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/buscar/{nombreSucursal}")
+    public ResponseEntity<SucursalResponseDTO> buscarSucursalporNombre(@PathVariable String nombreSucursal) {
+        Sucursal sucursal = sucursalService.buscarSucursalporNombre(nombreSucursal);
+        SucursalResponseDTO response = sucursalMapper.domainToResponse(sucursal);
+        return ResponseEntity.ok(response);
+    }
+
     @PutMapping("/update/{idSucursal}")
     public ResponseEntity<SucursalResponseDTO> modificarSucursal(@PathVariable Long idSucursal, @RequestBody SucursalRequestDTO sucursalRequestDTO) {
         Sucursal sucursal = sucursalMapper.requestToDomain(sucursalRequestDTO);

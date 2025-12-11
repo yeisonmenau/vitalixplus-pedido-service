@@ -39,7 +39,7 @@ public class PedidoEntity {
     @Column (name = "costo_pedido")
     private Double costoPedido;
     @Column (name = "lista_de_pedidos")
-    private List<Integer> listaDeProductos;
+    private List<Long> listaDeProductos;
     @Column (name = "total_pagar")
     private Double totalPagar;
 }

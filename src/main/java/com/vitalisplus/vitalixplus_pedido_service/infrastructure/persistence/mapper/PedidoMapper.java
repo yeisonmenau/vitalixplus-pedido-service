@@ -1,9 +1,12 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.mapper;
 
+import com.vitalisplus.vitalixplus_pedido_service.application.exception.SucursalNotFoundException;
+import com.vitalisplus.vitalixplus_pedido_service.application.exception.UsuarioNotFoundException;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.request.PedidoRequestDTO;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.response.PedidoResponseDTO;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.PedidoEntity;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.PedidoJpaRepository;
-import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.SucursalJpaRepository;
+import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,10 @@ public class PedidoMapper {
     private final SucursalMapper sucursalMapper;
     private final AuxiliarMapper auxiliarMapper;
     private final DomiciliarioMapper domiciliarioMapper;
+    private final UsuarioJpaRepository usuarioJpaRepository;
+    private final SucursalJpaRepository sucursalJpaRepository;
+    private final AuxiliarJpaRepository auxiliarJpaRepository;
+    private final DomiciliarioJpaRepository domiciliarioJpaRepository;
 
     public PedidoEntity domainToEntity (Pedido pedidoDomain){
         return new PedidoEntity(
@@ -47,4 +54,40 @@ public class PedidoMapper {
                 pedidoEntity.getTotalPagar()
         );
     }
+
+    public Pedido requestToDomain (PedidoRequestDTO pedidoRequest){
+        return new Pedido(
+                null,
+                usuarioMapper.entityToDomain(usuarioJpaRepository.findById(pedidoRequest.getIdUsuario())
+                        .orElseThrow(() -> new UsuarioNotFoundException("Usuario no encontrado con id: " + pedidoRequest.getIdUsuario()))),
+                sucursalMapper.entityToDomain(sucursalJpaRepository.findByNombre(pedidoRequest.getNombreSucursal())),
+                auxiliarMapper.entityToDomain(auxiliarJpaRepository.findById(pedidoRequest.getIdAuxiliar())
+                        .orElseThrow(() -> new SucursalNotFoundException("Auxiliar no encontrado con id: " + pedidoRequest.getIdAuxiliar()))),
+                domiciliarioMapper.entityToDomain(domiciliarioJpaRepository.findById(pedidoRequest.getIdDomiciliario())
+                        .orElseThrow(() -> new SucursalNotFoundException("Domiciliario no encontrado con id: " + pedidoRequest.getIdDomiciliario()))),
+                pedidoRequest.getFechaPedido(),
+                pedidoRequest.getDireccionEntrega(),
+                pedidoRequest.getCostoEnvio(),
+                pedidoRequest.getCostoPedido(),
+                pedidoRequest.getListaDeProductos(),
+                pedidoRequest.getTotalPagar()
+        );
+    }
+
+    public PedidoResponseDTO domainToResponse (Pedido pedidoDomain){
+        return new PedidoResponseDTO(
+                pedidoDomain.getIdPedido(),
+                pedidoDomain.getUsuario().getIdUsuario(),
+                pedidoDomain.getSucursal().getNombre(),
+                pedidoDomain.getAuxiliar().getIdAuxiliar(),
+                pedidoDomain.getDomiciliario().getIdDomiciliario(),
+                pedidoDomain.getFechaPedido(),
+                pedidoDomain.getDireccionEntrega(),
+                pedidoDomain.getCostoEnvio(),
+                pedidoDomain.getCostoPedido(),
+                pedidoDomain.getListaDeProductos(),
+                pedidoDomain.getTotalPagar()
+        );
+    }
+
 }

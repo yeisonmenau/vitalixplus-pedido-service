@@ -24,6 +24,6 @@ public class Pedido {
     private String direccionEntrega;
     private Double costoEnvio;
     private Double costoPedido;
-    private List<Integer> listaDeProductos;
+    private List<Long> listaDeProductos;
     private Double totalPagar;
 }

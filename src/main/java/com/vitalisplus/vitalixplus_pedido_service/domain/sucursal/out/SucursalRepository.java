@@ -10,6 +10,7 @@ public interface SucursalRepository {
     Sucursal crearSucursal (Sucursal sucursal);
     List<Sucursal> mostrarSucursales ();
     Sucursal buscarSucursalporId (Long idSucursal);
+    Sucursal buscarSucursalporNombre (String nombre);
     Sucursal modificarSucursal (Long idSucursal, Sucursal sucursal);
     String cambiarEstadoSucursal(Long idSucursal);
 }

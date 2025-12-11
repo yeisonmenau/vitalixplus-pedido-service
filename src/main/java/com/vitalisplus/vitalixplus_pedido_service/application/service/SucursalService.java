@@ -24,6 +24,11 @@ public class SucursalService{
         return sucursalRepository.buscarSucursalporId(idSucursal);
     }
 
+    public Sucursal buscarSucursalporNombre(String nombre) {
+        return sucursalRepository.buscarSucursalporNombre(nombre);
+    }
+
+
     public Sucursal modificarSucursal(Long idSucursal, Sucursal sucursal) {
         return sucursalRepository.modificarSucursal(idSucursal, sucursal);
     }
