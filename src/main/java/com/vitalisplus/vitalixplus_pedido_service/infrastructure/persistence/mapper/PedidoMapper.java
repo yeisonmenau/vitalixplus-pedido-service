@@ -23,20 +23,16 @@ public class PedidoMapper {
     private final AuxiliarJpaRepository auxiliarJpaRepository;
     private final DomiciliarioJpaRepository domiciliarioJpaRepository;
 
-    public PedidoEntity domainToEntity (Pedido pedidoDomain){
-        return new PedidoEntity(
-                pedidoDomain.getIdPedido(),
-                usuarioMapper.domainToEntity(pedidoDomain.getUsuario()),
-                sucursalMapper.domainToEntity(pedidoDomain.getSucursal()),
-                auxiliarMapper.domainToEntity(pedidoDomain.getAuxiliar()),
-                domiciliarioMapper.domainToEntity(pedidoDomain.getDomiciliario()),
-                pedidoDomain.getFechaPedido(),
-                pedidoDomain.getDireccionEntrega(),
-                pedidoDomain.getCostoEnvio(),
-                pedidoDomain.getCostoPedido(),
-                pedidoDomain.getListaDeProductos(),
-                pedidoDomain.getTotalPagar()
-        );
+    public PedidoEntity domainToEntity(Pedido pedidoDomain) {
+        PedidoEntity entity = new PedidoEntity();
+        entity.setIdPedido(pedidoDomain.getIdPedido());
+        entity.setFechaPedido(pedidoDomain.getFechaPedido());
+        entity.setDireccionEntrega(pedidoDomain.getDireccionEntrega());
+        entity.setCostoEnvio(pedidoDomain.getCostoEnvio());
+        entity.setCostoPedido(pedidoDomain.getCostoPedido());
+        entity.setListaDeProductos(pedidoDomain.getListaDeProductos());
+        entity.setTotalPagar(pedidoDomain.getTotalPagar());
+        return entity;
     }
 
     public Pedido entityToDomain (PedidoEntity pedidoEntity){

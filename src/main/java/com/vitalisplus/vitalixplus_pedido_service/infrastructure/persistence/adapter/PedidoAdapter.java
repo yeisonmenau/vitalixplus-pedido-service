@@ -1,8 +1,6 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.adapter;
 
-import com.vitalisplus.vitalixplus_pedido_service.application.exception.PedidoNotFoundException;
-import com.vitalisplus.vitalixplus_pedido_service.application.exception.SucursalNotFoundException;
-import com.vitalisplus.vitalixplus_pedido_service.application.exception.UsuarioNotFoundException;
+import com.vitalisplus.vitalixplus_pedido_service.application.exception.*;
 import com.vitalisplus.vitalixplus_pedido_service.domain.auxiliar.model.Auxiliar;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.out.PedidoRepository;
@@ -27,18 +25,30 @@ public class PedidoAdapter implements PedidoRepository {
 
     @Override
     public Pedido crearPedido(Pedido pedido) {
+
         UsuarioEntity usuarioEntity = usuarioJpaRepository.findById(pedido.getUsuario().getIdUsuario())
                 .orElseThrow(() -> new UsuarioNotFoundException("Usuario no encontrado con id: " + pedido.getUsuario().getIdUsuario()));
+
         SucursalEntity sucursalEntity = sucursalJpaRepository.findById(pedido.getSucursal().getIdSucursal())
                 .orElseThrow(() -> new SucursalNotFoundException("Sucursal no encontrada con id: " + pedido.getSucursal().getIdSucursal()));
+
         AuxiliarEntity auxiliarEntity = auxiliarJpaRepository.findById(pedido.getAuxiliar().getIdAuxiliar())
-                .orElseThrow(() -> new SucursalNotFoundException("Auxiliar no encontrado con id: " + pedido.getAuxiliar().getIdAuxiliar()));
+                .orElseThrow(() -> new AuxiliarNotFoundException("Auxiliar no encontrado con id: " + pedido.getAuxiliar().getIdAuxiliar()));
+
         DomiciliarioEntity domiciliarioEntity = domiciliarioJpaRepository.findById(pedido.getDomiciliario().getIdDomiciliario())
-                .orElseThrow(() -> new SucursalNotFoundException("Domiciliario no encontrado con id: " + pedido.getDomiciliario().getIdDomiciliario()));
+                .orElseThrow(() -> new DomiciliarioNotFoundException("Domiciliario no encontrado con id: " + pedido.getDomiciliario().getIdDomiciliario()));
         PedidoEntity pedidoEntity = pedidoMapper.domainToEntity(pedido);
+
+        pedidoEntity.setUsuario(usuarioEntity);
+        pedidoEntity.setSucursal(sucursalEntity);
+        pedidoEntity.setAuxiliar(auxiliarEntity);
+        pedidoEntity.setDomiciliario(domiciliarioEntity);
+
         PedidoEntity pedidoGuardado = pedidoJpaRepository.save(pedidoEntity);
+
         return pedidoMapper.entityToDomain(pedidoGuardado);
     }
+
 
     @Override
     public List<Pedido> mostrarpedidos() {
