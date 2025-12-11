@@ -57,5 +57,11 @@ public class UsuarioController {
         return ResponseEntity.ok(mensaje);
     }
 
+    @GetMapping("/login/{idUsuario}")
+    public ResponseEntity<String> buscarContraseñaporId(@PathVariable Long idUsuario) {
+        String contraseña = usuarioService.buscarContraseñaporId(idUsuario);
+        return ResponseEntity.ok(contraseña);
+    }
+
 
 }

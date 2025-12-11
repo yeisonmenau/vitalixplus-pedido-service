@@ -58,10 +58,10 @@ public class UsuarioAdapter implements UsuarioRepository {
         return "Se cambió el estado del usuario con id: " + idUsuario;
     }
 
-//    @Override
-//    public String buscarContraseñaporId(Long idUsuario) {
-//        Usuario usuario = buscarUsuarioporId(idUsuario);
-//        return usuario.getPassword();
-//    }
+    @Override
+    public String buscarContraseñaporId(Long idUsuario) {
+        Usuario usuario = buscarUsuarioporId(idUsuario);
+        return usuario.getPassword();
+    }
 
 }

@@ -28,5 +28,8 @@ public class UsuarioService{
     public String cambiarEstadoUsuario(Long idUsuario) {
         return usuarioRepository.cambiarEstadoUsuario(idUsuario);
     }
+    public String buscarContraseñaporId(Long idUsuario) {
+        return usuarioRepository.buscarContraseñaporId(idUsuario);
+    }
 
 }
