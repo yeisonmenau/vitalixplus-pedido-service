@@ -2,6 +2,7 @@ package com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.ad
 
 import com.vitalisplus.vitalixplus_pedido_service.application.exception.*;
 import com.vitalisplus.vitalixplus_pedido_service.domain.auxiliar.model.Auxiliar;
+import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.EstadoPedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.out.PedidoRepository;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.persistence.entity.*;
@@ -73,6 +74,15 @@ public class PedidoAdapter implements PedidoRepository {
         PedidoEntity pedidoActualizado = pedidoMapper.domainToEntity(pedido);
         pedidoActualizado.setIdPedido(existente.getIdPedido());
         PedidoEntity guardado = pedidoJpaRepository.save(pedidoActualizado);
+        return pedidoMapper.entityToDomain(guardado);
+    }
+
+    @Override
+    public Pedido modificarEstadoPedido(Long idPedido, EstadoPedido estado) {
+        PedidoEntity existente = pedidoJpaRepository.findById(idPedido)
+                .orElseThrow(() -> new PedidoNotFoundException("Pedido no encontrado con id: " + idPedido));
+        existente.setEstado(estado);
+        PedidoEntity guardado = pedidoJpaRepository.save(existente);
         return pedidoMapper.entityToDomain(guardado);
     }
 }

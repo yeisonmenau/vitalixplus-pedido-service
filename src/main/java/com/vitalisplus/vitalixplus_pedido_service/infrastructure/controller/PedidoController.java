@@ -1,6 +1,7 @@
 package com.vitalisplus.vitalixplus_pedido_service.infrastructure.controller;
 
 import com.vitalisplus.vitalixplus_pedido_service.application.service.PedidoService;
+import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.EstadoPedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.request.PedidoRequestDTO;
 import com.vitalisplus.vitalixplus_pedido_service.infrastructure.dto.response.PedidoResponseDTO;
@@ -47,6 +48,13 @@ public class PedidoController {
     public ResponseEntity<PedidoResponseDTO> modificarPedido(@PathVariable Long idPedido, @RequestBody PedidoRequestDTO pedidoRequestDTO) {
         Pedido pedido = pedidoMapper.requestToDomain(pedidoRequestDTO);
         Pedido pedidoModificado = pedidoService.modificarPedido(idPedido, pedido);
+        PedidoResponseDTO response = pedidoMapper.domainToResponse(pedidoModificado);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/change-status/{idPedido}")
+    public ResponseEntity<PedidoResponseDTO> modificarEstadoPedido(@PathVariable Long idPedido, @RequestBody EstadoPedido estado) {
+        Pedido pedidoModificado = pedidoService.modificarEstadoPedido(idPedido, estado);
         PedidoResponseDTO response = pedidoMapper.domainToResponse(pedidoModificado);
         return ResponseEntity.ok(response);
     }

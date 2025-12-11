@@ -1,5 +1,6 @@
 package com.vitalisplus.vitalixplus_pedido_service.application.service;
 
+import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.EstadoPedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.model.Pedido;
 import com.vitalisplus.vitalixplus_pedido_service.domain.pedido.out.PedidoRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,10 @@ public class PedidoService{
 
     public Pedido modificarPedido(Long idPedido, Pedido pedido) {
         return pedidoRepository.modificarPedido(idPedido, pedido);
+    }
+
+    public Pedido modificarEstadoPedido(Long idPedido, EstadoPedido estado){
+        return pedidoRepository.modificarEstadoPedido(idPedido, estado);
     }
 
 
